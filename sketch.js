@@ -4,6 +4,10 @@ var centerX;
 var centerY;
 let nouns;
 
+document.addEventListener('keydown', function() {
+    newWord();
+  });
+
 //get distance nouns as array nouns
 async function getDistanceNouns (){
     const response = await fetch("/dataset/distance-nouns.json")
@@ -41,6 +45,9 @@ function draw () {
     textAlign(CENTER,CENTER);
     textWrap(WORD);
     text(txt,centerX,centerY);
+
+    onkeyup = (event) => {};
+
 }
 
 function mouseClicked(){
