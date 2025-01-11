@@ -15,7 +15,7 @@ document.addEventListener('keydown', function() {
 
 //get distance nouns as array nouns
 async function getDistanceNouns (){
-    const response = await fetch("/dataset/distance-nouns.json")
+    const response = await fetch("./dataset/distance-nouns.json")
     const data = await response.json();
     console.log(data);
     nouns = data;
@@ -32,8 +32,8 @@ async function getDistanceNouns (){
 // .catch(error => console.error('Error:', error));
 
 function preload(){
-    font = loadFont('/assets/DMSans-VariableFont_opsz,wght.ttf')
-    img = loadImage('/assets/images/1.webp')
+    font = loadFont('./assets/DMSans-VariableFont_opsz,wght.ttf')
+    img = loadImage('./assets/images/1.webp')
 }
 
 function setup () {
@@ -111,6 +111,6 @@ function newWord (){
 }
 
 function newImage() {
-    img = loadImage('/assets/images/' + (Math.floor(Math.random() * 7) + 1) + '.webp');
+    img = loadImage('./assets/images/' + (Math.floor(Math.random() * 7) + 1) + '.webp');
 }
 
