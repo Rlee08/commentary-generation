@@ -1,11 +1,16 @@
 var txt = "He is coming up on his final lap!";
 let font;
 var centerX;
-var centerY;
+var textY;
+var imgY;
+var instructionsY;
 let nouns;
+let img;
+var instructions = "Click for a new unit"
 
 document.addEventListener('keydown', function() {
     newWord();
+    newImage();
   });
 
 //get distance nouns as array nouns
@@ -28,6 +33,7 @@ async function getDistanceNouns (){
 
 function preload(){
     font = loadFont('/assets/DMSans-VariableFont_opsz,wght.ttf')
+    img = loadImage('/assets/images/1.webp')
 }
 
 function setup () {
@@ -37,21 +43,31 @@ function setup () {
     textFont(font, 36);
 
     centerX = width/2;
-    centerY = height/2;
+    
+    imgY = height/2 - 40;
+    instructionsY = 20;
 }
 
 function draw () {
+    textY = height/2 + img.height/2 + 10;
+
     background(255);
     textAlign(CENTER,CENTER);
     textWrap(WORD);
-    text(txt,centerX,centerY);
+    text(txt,centerX,textY);
 
-    onkeyup = (event) => {};
 
+    text(instructions,centerX,instructionsY)
+
+    
+
+    imageMode (CENTER);
+    image(img,centerX,imgY,);
 }
 
 function mouseClicked(){
     newWord();
+    newImage();
 }
 
 function newWord (){
@@ -92,5 +108,9 @@ function newWord (){
     //recombine into string and display
     txt = RiTa.untokenize(newSentence);
     console.log(txt);
+}
+
+function newImage() {
+    img = loadImage('/assets/images/' + (Math.floor(Math.random() * 7) + 1) + '.webp');
 }
 
